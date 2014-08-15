@@ -77,14 +77,17 @@ end
 # e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
 # are 2 palindromes (bob and radar), so the method should return 2
 def number_of_elements_that_are_palindromes(array)
+	array.select{|el| el == el.reverse}.count
 end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
+	array.group_by(&:size).min.last[0]
 end
 
 # return the longest word in an array
 def longest_word_in_array(array)
+	array.group_by(&:size).max.last[0]
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
