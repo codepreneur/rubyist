@@ -241,6 +241,11 @@ end
 # the next year when your birthday will fall on a friday
 # e.g. january 1st, will next be a friday in 2016
 def your_birthday_is_on_a_friday_in_the_year(birthday)
+	until birthday.friday?
+    birthday = Time.new birthday.year + 1, birthday.month, birthday.day
+    # birthday += (365 * 24 * 60 * 60)
+  end
+  birthday.year
 end
 
 # in a file, total the number of times words of different lengths
@@ -249,12 +254,26 @@ end
 # and 1 that is 4 letters long. Return it as a hash in the format
 # word_length => count, e.g. {2 => 1, 3 => 5, 4 => 1}
 def count_words_of_each_length_in_a_file(file_path)
+	words, count = IO.read(file_path).scan(/\w+/), Hash.new(0)
+
+  words.each { |w| count[w.size] += 1 } and return count
 end
 
 # implement fizzbuzz without modulo, i.e. the % method
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
+	1.upto(100) do |n|
+    str = ''
+    if (n / 3.0).round == (n / 3.0)
+      str << 'Fizz'
+    end
+
+    if (n / 5.0).round == (n / 5.0)
+      str << 'Buzz'
+    end
+    puts str.empty? ? n : str
+  end
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
@@ -264,4 +283,14 @@ end
 # at the end.
 # (there's no RSpec test for this one)
 def ninety_nine_bottles_of_beer
+	99.downto(1) do |n|
+    nouns = Hash.new('bottles')
+    nouns[1] = 'bottle'
+
+    puts "#{n} #{nouns[n]} of beer on the wall"
+    puts "#{n} #{nouns[n]} of beer"
+    puts 'take one down, pass it around'
+    puts "#{n-1} #{nouns[n-1]} of beer on the wall\n\n" if n > 1
+  end
+  puts 'no bottles of beer on the wall'
 end

@@ -209,13 +209,13 @@ describe 'the Friday test :)' do
     expect(b).to be false
   end
 
-  # specify 'your_birthday_is_on_a_friday_in_the_year' do
-  #   n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
-  #   expect(n).to eq 2016
-  # end
+  specify 'your_birthday_is_on_a_friday_in_the_year' do
+    n = your_birthday_is_on_a_friday_in_the_year(Time.new(2013, 1, 1))
+    expect(n).to eq 2016
+  end
 
-  # specify 'count_words_of_each_length_in_a_file' do
-  #   n = count_words_of_each_length_in_a_file('lorem.txt') || []
-  #   expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
-  # end
+  specify 'count_words_of_each_length_in_a_file' do
+    n = count_words_of_each_length_in_a_file('lorem.txt') || []
+    expect(Hash[n.sort]).to eq({2=>13, 3=>6, 4=>11, 5=>10, 6=>9, 7=>8, 8=>4, 9=>4, 10=>1, 11=>2, 12=>1, 13=>1}) 
+  end
 end
